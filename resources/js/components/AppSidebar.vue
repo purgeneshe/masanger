@@ -5,25 +5,35 @@ import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
+import { Ampersand, BookOpen, Folder, LayoutGrid, Mail, MailCheck } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: 'Сводка',
         href: '/dashboard',
         icon: LayoutGrid,
+    },
+    {
+        title: 'Чаты',
+        href: '/chats',
+        icon: Mail,
     },
 ];
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Github Repo',
+        title: 'Github мой',
+        href: 'https://github.com/purgeneshe/masanger',
+        icon: Folder,
+    },
+    {
+        title: 'Github начального набора',
         href: 'https://github.com/laravel/vue-starter-kit',
         icon: Folder,
     },
     {
-        title: 'Documentation',
+        title: 'Документация',
         href: 'https://laravel.com/docs/starter-kits#vue',
         icon: BookOpen,
     },
