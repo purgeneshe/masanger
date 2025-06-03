@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers;
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
@@ -14,6 +15,10 @@ Route::get('dashboard', function () {
 Route::get('chats', function () {
     return Inertia::render('Chats');
 })->middleware(['auth', 'verified'])->name('chats');
+
+Route::get('/chats/{user?}', [Controllers\UserController::class, 'showDetail'])
+    ->name('chats.show')
+    ->middleware(['auth', 'verified']);
 
 
 

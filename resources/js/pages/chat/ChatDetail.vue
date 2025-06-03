@@ -2,14 +2,19 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import UsersList from './chat/UserList.vue';
+
+const props = defineProps({
+    user: Array // Тип соответствует тому, что вы передали (123 - число)
+});
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Чаты',
+        title: `Чат с ${props.user.name}`,
         href: '/dashboard',
     },
 ];
+
+
 </script>
 
 <template>
@@ -18,8 +23,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
             <div>
-                <h2 class="text-xl font-semibold mb-4">Список пользователей</h2>
-                <UsersList />
+                <h2 class="text-xl font-semibold mb-4">{{ user.name }}</h2>
             </div>
         </div>
     </AppLayout>
