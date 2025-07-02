@@ -15,15 +15,28 @@ class UserController extends Controller
         return User::where('id', '!=', $currentUserId)->get();
     }
 
-//    public function getUserById(int $id){
-//        return User::where('id', '=', $_REQUEST['id'])->get();
-//    }
+    /**
+     * @param int $id
+     * @return null
+     */
+    public function getUserById(int $id){
+        $user = $id ? User::find($id) : null;
+
+        return $user;
+    }
 
 
+    /**
+     * @param Request $request
+     * @return \Inertia\Response
+     *
+     * user - Необязательная переменная с web.php
+     */
     public function showDetail(Request $request)
     {
-        $userId = $request->route('user');
-        $user = $userId ? User::find($userId) : null;
+
+        $user = $this->getUserById($request->route('user'));
+
 
         return Inertia::render('chat/ChatDetail', [
             'user' => $user
